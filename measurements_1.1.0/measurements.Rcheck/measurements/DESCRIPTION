@@ -11,3 +11,6 @@ Description: Collection of tools to make working with physical measurements
 License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 5.0.1
+NeedsCompilation: no
+Packaged: 2016-10-28 17:33:17 UTC; matthewbirk
+Built: R 3.3.1; ; 2016-10-28 17:33:26 UTC; unix
