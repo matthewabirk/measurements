@@ -1,7 +1,4 @@
 -------------------------------------------------
-version x.y.z, yyyy-mm-dd
-
--------------------------------------------------
 version 1.3.0, 2018-12-09
 - conv_unit():	added "pmol" and "fmol" as count unit options
 - conv_unit():	added "Da" (Dalton), "Tg", "Gg", "Mg", ng", "pg", and "fg" as mass unit options

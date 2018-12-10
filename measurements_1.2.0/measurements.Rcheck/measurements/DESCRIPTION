@@ -1,8 +1,8 @@
 Package: measurements
 Type: Package
 Title: Tools for Units of Measurement
-Version: x.y.z
-Date: yyyy-mm-dd
+Version: 1.2.0
+Date: 2018-03-21
 Author: Matthew A. Birk
 Maintainer: Matthew A. Birk <matthewabirk@gmail.com>
 Description: Collection of tools to make working with physical measurements
@@ -10,4 +10,7 @@ Description: Collection of tools to make working with physical measurements
 		unknown value from other dimensions' measurements.
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 6.1.0
+RoxygenNote: 6.0.1
+NeedsCompilation: no
+Packaged: 2018-03-21 20:15:58 UTC; matthewbirk
+Built: R 3.4.3; ; 2018-03-21 20:16:06 UTC; unix
