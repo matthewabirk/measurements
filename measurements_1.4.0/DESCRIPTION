@@ -1,8 +1,8 @@
 Package: measurements
 Type: Package
 Title: Tools for Units of Measurement
-Version: x.y.z
-Date: yyyy-mm-dd
+Version: 1.4.0
+Date: 2019-05-27
 Author: Matthew A. Birk
 Maintainer: Matthew A. Birk <matthewabirk@gmail.com>
 Description: Collection of tools to make working with physical measurements

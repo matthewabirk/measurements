@@ -1,0 +1,272 @@
+
+R version 3.6.0 (2019-04-26) -- "Planting of a Tree"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "measurements"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> base::assign(".ExTimings", "measurements-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('measurements')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("conv_dim")
+> ### * conv_dim
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: conv_dim
+> ### Title: Convert Dimensions of Measurement
+> ### Aliases: conv_dim
+> 
+> ### ** Examples
+> 
+> # How many minutes does it take to travel 100 meters at 3 feet per second?
+> conv_dim(x = 100, x_unit = "m", trans = 3, trans_unit = "ft_per_sec", y_unit = "min")
+[1] 1.822689
+> 
+> # How many degrees does the temperature increase with an increase in 4 kPa given 0.8 Celcius
+> # increase per psi?
+> conv_dim(x_unit = "C", trans = 0.8, trans_unit = "C_per_psi", y = 4, y_unit = "kPa")
+[1] 0.4641208
+> 
+> # Find the densities given volume and mass measurements.
+> conv_dim(x = c(60, 80), x_unit = "ft3", trans_unit = "kg_per_l", y = c(6e6, 4e6), y_unit = "g")
+[1] 3.531467 1.765733
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("conv_dim", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("conv_multiunit")
+> ### * conv_multiunit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: conv_multiunit
+> ### Title: Convert Units of Measurement Composed of Multiple Units
+> ### Aliases: conv_multiunit
+> 
+> ### ** Examples
+> 
+> conv_multiunit(x = 10, from = "ft / hr * F", to = "m / min * C")
+[1] -0.8748889
+> conv_multiunit(x = 1:100, from = "gal_per_min * ft / psi * hp", to = "l_per_hr * km / kPa * kW")
+  [1] 0.007487187 0.014974374 0.022461561 0.029948748 0.037435935 0.044923122
+  [7] 0.052410309 0.059897496 0.067384683 0.074871870 0.082359057 0.089846244
+ [13] 0.097333431 0.104820618 0.112307805 0.119794992 0.127282179 0.134769366
+ [19] 0.142256553 0.149743740 0.157230927 0.164718114 0.172205301 0.179692487
+ [25] 0.187179674 0.194666861 0.202154048 0.209641235 0.217128422 0.224615609
+ [31] 0.232102796 0.239589983 0.247077170 0.254564357 0.262051544 0.269538731
+ [37] 0.277025918 0.284513105 0.292000292 0.299487479 0.306974666 0.314461853
+ [43] 0.321949040 0.329436227 0.336923414 0.344410601 0.351897788 0.359384975
+ [49] 0.366872162 0.374359349 0.381846536 0.389333723 0.396820910 0.404308097
+ [55] 0.411795284 0.419282471 0.426769658 0.434256845 0.441744032 0.449231219
+ [61] 0.456718406 0.464205593 0.471692780 0.479179967 0.486667154 0.494154341
+ [67] 0.501641528 0.509128715 0.516615902 0.524103089 0.531590275 0.539077462
+ [73] 0.546564649 0.554051836 0.561539023 0.569026210 0.576513397 0.584000584
+ [79] 0.591487771 0.598974958 0.606462145 0.613949332 0.621436519 0.628923706
+ [85] 0.636410893 0.643898080 0.651385267 0.658872454 0.666359641 0.673846828
+ [91] 0.681334015 0.688821202 0.696308389 0.703795576 0.711282763 0.718769950
+ [97] 0.726257137 0.733744324 0.741231511 0.748718698
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("conv_multiunit", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("conv_unit")
+> ### * conv_unit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: conv_unit
+> ### Title: Convert Units of Measurement
+> ### Aliases: conv_unit
+> 
+> ### ** Examples
+> 
+> conv_unit(2.54, "cm", "inch") # Result = 1 inch
+[1] 1
+> 
+> conv_unit(seq(1, 10), "kg", "short_ton") # A vector of measurement values can be converted
+ [1] 0.001102311 0.002204623 0.003306934 0.004409245 0.005511557 0.006613868
+ [7] 0.007716179 0.008818490 0.009920802 0.011023113
+> 
+> # Convert 1, 10, and 100 meters to all other length units
+> sapply(conv_unit_options$length, function(x) conv_unit(c(1, 10, 100), "m", x))
+     angstrom    nm    um    mm    cm   dm   m    km       inch        ft
+[1,]    1e+10 1e+09 1e+06 1e+03   100   10   1 0.001   39.37008   3.28084
+[2,]    1e+11 1e+10 1e+07 1e+04  1000  100  10 0.010  393.70079  32.80840
+[3,]    1e+12 1e+11 1e+08 1e+05 10000 1000 100 0.100 3937.00787 328.08399
+          foot      feet         yd       yard     fathom           mi
+[1,]   3.28084   3.28084   1.093613   1.093613  0.5468066 0.0006213712
+[2,]  32.80840  32.80840  10.936133  10.936133  5.4680665 0.0062137119
+[3,] 328.08399 328.08399 109.361330 109.361330 54.6806649 0.0621371192
+             mile      naut_mi           au     light_yr   light_year
+[1,] 0.0006213712 0.0005399568 6.684587e-12 1.057001e-16 1.057001e-16
+[2,] 0.0062137119 0.0053995680 6.684587e-11 1.057001e-15 1.057001e-15
+[3,] 0.0621371192 0.0539956803 6.684587e-10 1.057001e-14 1.057001e-14
+           parsec      point
+[1,] 3.240779e-17   2834.646
+[2,] 3.240779e-16  28346.457
+[3,] 3.240779e-15 283464.567
+> 
+> conv_unit("33 1 1", "deg_min_sec", "dec_deg")
+[1] "33.0169444444444"
+> 
+> conv_unit(c("101 44.32","3 19.453"), "deg_dec_min", "deg_min_sec")
+[1] "101 44 19.2000000000116" "3 19 27.1800000000003"  
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("conv_unit", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("conv_unit_options")
+> ### * conv_unit_options
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: conv_unit_options
+> ### Title: Unit of Measurement Conversion Options
+> ### Aliases: conv_unit_options
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> conv_unit_options
+$acceleration
+ [1] "mm_per_sec2"   "cm_per_sec2"   "m_per_sec2"    "km_per_sec2"  
+ [5] "grav"          "inch_per_sec2" "ft_per_sec2"   "mi_per_sec2"  
+ [9] "kph_per_sec"   "mph_per_sec"  
+
+$angle
+[1] "degree" "radian" "grad"   "arcmin" "arcsec" "turn"  
+
+$area
+ [1] "nm2"      "um2"      "mm2"      "cm2"      "m2"       "hectare" 
+ [7] "km2"      "inch2"    "in2"      "ft2"      "yd2"      "acre"    
+[13] "mi2"      "naut_mi2"
+
+$coordinate
+[1] "dec_deg"     "deg_dec_min" "deg_min_sec" "dms"         "DMS"        
+
+$count
+[1] "fmol" "pmol" "nmol" "umol" "mmol" "mol" 
+
+$duration
+ [1] "nsec"      "usec"      "msec"      "sec"       "min"       "hr"       
+ [7] "hour"      "day"       "wk"        "week"      "mon"       "yr"       
+[13] "year"      "dec"       "decade"    "cen"       "century"   "mil"      
+[19] "millenium" "Ma"       
+
+$energy
+[1] "J"    "kJ"   "erg"  "cal"  "Cal"  "Wsec" "kWh"  "MWh"  "BTU" 
+
+$file_size
+ [1] "byte" "KB"   "kB"   "MB"   "GB"   "TB"   "PB"   "bit"  "Kbit" "kbit"
+[11] "Mbit" "Gbit" "Tbit" "Pbit"
+
+$flow
+ [1] "ml_per_sec"  "ml_per_min"  "ml_per_hr"   "l_per_sec"   "l_per_min"  
+ [6] "LPM"         "l_per_hr"    "m3_per_sec"  "m3_per_min"  "m3_per_hr"  
+[11] "Sv"          "gal_per_sec" "gal_per_min" "GPM"         "gal_per_hr" 
+[16] "ft3_per_sec" "ft3_per_min" "ft3_per_hr" 
+
+$length
+ [1] "angstrom"   "nm"         "um"         "mm"         "cm"        
+ [6] "dm"         "m"          "km"         "inch"       "ft"        
+[11] "foot"       "feet"       "yd"         "yard"       "fathom"    
+[16] "mi"         "mile"       "naut_mi"    "au"         "light_yr"  
+[21] "light_year" "parsec"     "point"     
+
+$mass
+ [1] "Da"         "fg"         "pg"         "ng"         "ug"        
+ [6] "mg"         "g"          "kg"         "Mg"         "Gg"        
+[11] "Tg"         "Pg"         "carat"      "metric_ton" "oz"        
+[16] "lbs"        "short_ton"  "long_ton"   "stone"     
+
+$power
+ [1] "uW"          "mW"          "W"           "kW"          "MW"         
+ [6] "GW"          "erg_per_sec" "cal_per_sec" "cal_per_hr"  "Cal_per_sec"
+[11] "Cal_per_hr"  "BTU_per_sec" "BTU_per_hr"  "hp"         
+
+$pressure
+ [1] "uatm"  "atm"   "Pa"    "hPa"   "kPa"   "torr"  "mmHg"  "inHg"  "cmH2O"
+[10] "inH2O" "mbar"  "bar"   "dbar"  "psi"   "PSI"  
+
+$speed
+ [1] "mm_per_sec"   "cm_per_sec"   "m_per_sec"    "km_per_sec"   "inch_per_sec"
+ [6] "ft_per_sec"   "kph"          "km_per_hr"    "mph"          "mi_per_hr"   
+[11] "km_per_day"   "mi_per_day"   "knot"         "mach"         "light"       
+
+$temperature
+[1] "C" "F" "K" "R"
+
+$volume
+ [1] "ul"        "ml"        "dl"        "l"         "cm3"       "dm3"      
+ [7] "m3"        "km3"       "us_tsp"    "us_tbsp"   "us_oz"     "us_cup"   
+[13] "us_pint"   "us_quart"  "us_gal"    "inch3"     "ft3"       "mi3"      
+[19] "imp_tsp"   "imp_tbsp"  "imp_oz"    "imp_cup"   "imp_pint"  "imp_quart"
+[25] "imp_gal"  
+
+> conv_unit_options$pressure
+ [1] "uatm"  "atm"   "Pa"    "hPa"   "kPa"   "torr"  "mmHg"  "inHg"  "cmH2O"
+[10] "inH2O" "mbar"  "bar"   "dbar"  "psi"   "PSI"  
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("conv_unit_options", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.236 0.017 0.26 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
